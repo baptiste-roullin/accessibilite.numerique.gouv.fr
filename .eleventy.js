@@ -45,12 +45,12 @@ module.exports = function (eleventyConfig) {
 		const mainPromiseNoModule = esbuild.build({
 			...mainOptions,
 			...noModuleOptions,
-			outfile: "public/js/main.nomodule.js",
+			outfile: "dist/js/main.nomodule.js",
 		})
 
 		const mainPromiseModule = esbuild.build({
 			...mainOptions,
-			outfile: "public/js/main.module.js",
+			outfile: "dist/js/main.module.js",
 		})
 
 		/**
@@ -149,9 +149,6 @@ module.exports = function (eleventyConfig) {
 				b.methode.data.eleventyNavigation.order
 		)
 	})
-
-
-
 
 
 

@@ -3,9 +3,9 @@
 	"version": "1.3.6",
 	"description": "Référentiel général d’amélioration de l’accessibilité (RGAA)",
 	"scripts": {
-		"build": "eleventy",
-		"watch": "eleventy --watch",
-		"start": "eleventy --serve --quiet --incremental",
+		"build": "npx @11ty/eleventy",
+		"watch": "npx @11ty/eleventy --watch",
+		"start": "npx @11ty/eleventy --serve --quiet --incremental",
 		"debug": "DEBUG=* eleventy",
 		"format": "prettier ./ --write",
 		"generate-glossary": "node ./scripts/generate-glossary.js && git add ./RGAA/glossaire.json",
@@ -18,7 +18,7 @@
 	"license": "Licence Ouverte Etalab v2.0",
 	"homepage": "https://accessibilite.numerique.gouv.fr",
 	"dependencies": {
-		"@11ty/eleventy": "^1.0.0-beta.10",
+		"@11ty/eleventy": "*",
 		"@11ty/eleventy-navigation": "^0.3.2",
 		"@gouvfr/dsfr": "^1.9.0",
 		"eleventy-plugin-styles": "^1.1.1",
