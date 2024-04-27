@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "eleventy",
 		"watch": "eleventy --watch",
-		"start": "eleventy --serve",
+		"start": "eleventy --serve --quiet --incremental",
 		"debug": "DEBUG=* eleventy",
 		"format": "prettier ./ --write",
 		"generate-glossary": "node ./scripts/generate-glossary.js && git add ./RGAA/glossaire.json",

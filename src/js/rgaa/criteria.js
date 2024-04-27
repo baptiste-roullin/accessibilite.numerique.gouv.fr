@@ -23,10 +23,11 @@ export function allCriterionAndTests() {
 			}
 
 			const setTo = (allCriterion?.getAttribute("pressed") ? "true" : "false")
+			fastdom.mutate(() => {
 
-			const headerExpanded = button.getAttribute("aria-expanded")
-			button.setAttribute("aria-expanded", setTo)
-			window.scrollTo({ top: 0 })
+				const headerExpanded = button.getAttribute("aria-expanded")
+				button.setAttribute("aria-expanded", setTo)
+			})
 
 		})
 	}
@@ -37,10 +38,10 @@ export function allCriterionAndTests() {
 		const setTo = (allTests?.getAttribute("pressed") ? "true" : "false")
 		containers.forEach(container => {
 			const button = container.children[0]
-
-			const headerExpanded = button.getAttribute("aria-expanded")
-			button.setAttribute("aria-expanded", setTo)
-			window.scrollTo({ top: 0 })
+			fastdom.mutate(() => {
+				const headerExpanded = button.getAttribute("aria-expanded")
+				button.setAttribute("aria-expanded", setTo)
+			})
 
 		})
 
