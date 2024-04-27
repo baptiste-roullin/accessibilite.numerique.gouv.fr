@@ -8,7 +8,7 @@ export function allCriterionAndTests() {
 	const allTests = document.querySelector("#allTests")
 
 
-	const displayAllCriterion = () => {
+	const displayAllCriterion = (event) => {
 		const containers = document.querySelectorAll(".criteres > div > section ")
 
 		containers.forEach(container => {
@@ -20,25 +20,20 @@ export function allCriterionAndTests() {
 				allTests?.setAttribute("disabled", "true")
 			}
 
-			const setTo = (allCriterion?.getAttribute("pressed") ? "true" : "false")
 			fastdom.mutate(() => {
-
-				const headerExpanded = button.getAttribute("aria-expanded")
-				button.setAttribute("aria-expanded", setTo)
+				button.setAttribute("aria-expanded", event.target.checked)
 			})
 
 		})
 	}
 
-	function displayAllTests() {
+	function displayAllTests(event) {
 		const containers = document.querySelectorAll(" .tests .methodologie")
 
-		const setTo = (allTests?.getAttribute("pressed") ? "true" : "false")
 		containers.forEach(container => {
 			const button = container.children[0]
 			fastdom.mutate(() => {
-				const headerExpanded = button.getAttribute("aria-expanded")
-				button.setAttribute("aria-expanded", setTo)
+				button.setAttribute("aria-expanded", event.target.checked)
 			})
 
 		})
