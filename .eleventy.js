@@ -150,50 +150,10 @@ module.exports = function (eleventyConfig) {
 		)
 	})
 
-	// Custom collection: Les obligations légales
-	eleventyConfig.addCollection("obligations", function (collection) {
-		let obligations = collection.getFilteredByGlob("./src/obligations/*.md")
-		obligations = obligations.map(function (obligation) {
-			const slug = obligation.fileSlug
-			return {
-				obligation,
-				slug,
-			}
-		})
-		return obligations.sort(
-			(a, b) =>
-				a.obligation.data.eleventyNavigation.order -
-				b.obligation.data.eleventyNavigation.order
-		)
-	})
 
-	// Custom collection: Les ressources
-	eleventyConfig.addCollection("ressources", function (collection) {
-		let ressources = collection.getFilteredByGlob("./src/ressources/*.md")
-		ressources = ressources.map(function (ressource) {
-			const slug = ressource.fileSlug
-			return {
-				ressource,
-				slug,
-			}
-		})
-		return ressources.sort(
-			(a, b) =>
-				a.ressource.data.eleventyNavigation.order -
-				b.ressource.data.eleventyNavigation.order
-		)
-	})
 
-	// Custom collection: La faq
-	eleventyConfig.addCollection("faq", function (collection) {
-		const question = collection.getFilteredByGlob("./src/rgaa/faq/*.md")
-		const faq = question.map(function (question) {
-			return {
-				question,
-			}
-		})
-		return faq
-	})
+
+
 
 	// Custom collection: Tout le glossaire du RGAA
 	eleventyConfig.addCollection("glossary", function (collection) {
@@ -285,8 +245,8 @@ module.exports = function (eleventyConfig) {
 	return {
 		dir: {
 			input: "src",
+			pathPrefix: "/rgaa/",
 			output: "dist",
-			pathPrefix: "/rgaa/"
 		},
 	}
 }
