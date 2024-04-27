@@ -1,55 +1,118 @@
-import fastdom from "fastdom";
+import fastdom from "fastdom"
+
+
+
+export function allCriterionAndTests() {
+
+	const toggleAttribute = (el) => (el === "true" || "" ? "false" : "true")
+
+	const allCriterion = document.querySelector("#allCriterion")
+	const allTests = document.querySelector("#allTests")
+
+
+	const displayAllCriterion = () => {
+		const containers = document.querySelectorAll(".criteres > div > section ")
+
+		containers.forEach(container => {
+			const button = container.children[0]
+			const disabled = allTests?.getAttribute("disabled")
+			if (disabled)
+				allTests?.removeAttribute("disabled")
+			else {
+				allTests?.setAttribute("disabled", "true")
+			}
+
+			const setTo = (allCriterion?.getAttribute("pressed") ? "true" : "false")
+
+			const headerExpanded = button.getAttribute("aria-expanded")
+			button.setAttribute("aria-expanded", setTo)
+			window.scrollTo({ top: 0 })
+
+		})
+	}
+
+	function displayAllTests() {
+		const containers = document.querySelectorAll(" .tests .methodologie")
+
+		const setTo = (allTests?.getAttribute("pressed") ? "true" : "false")
+		containers.forEach(container => {
+			const button = container.children[0]
+
+			const headerExpanded = button.getAttribute("aria-expanded")
+			button.setAttribute("aria-expanded", setTo)
+			window.scrollTo({ top: 0 })
+
+		})
+
+	}
+
+
+	if (allCriterion) {
+		allCriterion?.addEventListener("change", displayAllCriterion)
+	}
+
+	if (allTests && !allTests.getAttribute("disabled")) {
+		allTests.addEventListener("change", displayAllTests)
+	}
+	/*
+		document.addEventListener('DOMContentLoaded', function () {
+			displayAllCriterion()
+			displayAllTests()
+		})*/
+}
+
+allCriterionAndTests()
 
 export function init() {
 	// Handle the 3 filters in criteria page
-	const filtersEl = document.querySelector("#criteria-filters");
-	const criteriaContainerEl = document.querySelector("#criteria-container");
+	const filtersEl = document.querySelector("#criteria-filters")
+	const criteriaContainerEl = document.querySelector("#criteria-container")
 	if (filtersEl && criteriaContainerEl) {
-		const criteriaContainerParentEl = criteriaContainerEl.parentElement;
-		const buttonElms = criteriaContainerEl.getElementsByTagName("button");
-		const liEls = criteriaContainerParentEl.querySelectorAll("li.criterion");
+		const criteriaContainerParentEl = criteriaContainerEl.parentElement
+		const buttonElms = criteriaContainerEl.getElementsByTagName("button")
+		const liEls = criteriaContainerParentEl.querySelectorAll("li.criterion")
 
 		// filtering happens under "criteria-filters" element
 		filtersEl.addEventListener("change", function (e) {
-			const curEl = e.target;
-			const filter = curEl.dataset.filter;
-			const checked = curEl.checked;
+			const curEl = e.target
+			const filter = curEl.dataset.filter
+			const checked = curEl.checked
 			switch (filter) {
 				case "all":
-					const buttons = Array.from(buttonElms);
+					const buttons = Array.from(buttonElms)
 					for (let il = buttons.length, i = il - 1, button; i >= 0; --i) {
-						button = buttons[i];
+						button = buttons[i]
 						fastdom.mutate(() => {
-							button.setAttribute("aria-expanded", checked);
-						});
+							button.setAttribute("aria-expanded", checked)
+						})
 					}
-					break;
+					break
 				case "A":
 				case "AA":
 					let checkedFilters = Array.from(
 						filtersEl.querySelectorAll("input:checked")
-					);
-					checkedFilters = checkedFilters.map((el) => el.dataset.filter);
-					const lis = Array.from(liEls);
+					)
+					checkedFilters = checkedFilters.map((el) => el.dataset.filter)
+					const lis = Array.from(liEls)
 					lis.forEach(function (el) {
-						const arr = el.dataset.wcagLevel.split(",");
+						const arr = el.dataset.wcagLevel.split(",")
 						if (!arr.filter((el) => checkedFilters.includes(el)).length) {
 							fastdom.mutate(() => {
-								el.classList.add("fr-hidden");
-							});
+								el.classList.add("fr-hidden")
+							})
 						} else {
 							fastdom.mutate(() => {
-								el.classList.remove("fr-hidden");
-							});
+								el.classList.remove("fr-hidden")
+							})
 						}
-					});
-					break;
+					})
+					break
 				default:
 					// should never happen
-					break;
+					break
 			}
-		});
+		})
 	}
 }
 
-init();
+init()

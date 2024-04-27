@@ -1,15 +1,16 @@
 	{% extends './base-rgaaNav.njk' %}
 	{% block contenu %}
-		<!--div class="fr-form-group">
-				<div class="fr-checkbox-group">
-				<input type="checkbox" id="checkboxes-inline-1" name="checkboxes-inline-1" data-filter="all">
-				<label class="fr-label" for="checkboxes-inline-1">Afficher les tests</label>
+		<div class="fr-form-group">
+				<div class="fr-toggle">
+					<input  type="checkbox" pressed="false" class="fr-toggle__input" id="allCriterion">
+					<label class="fr-toggle__label" for="allCriterion">Affichage du détail de tous les critères</label>
 				</div>
 				<div class="fr-toggle">
-				<input disabled type="checkbox" class="fr-toggle__input" id="allCriterion">
-				<label class="fr-toggle__label" for="allCriterion">Affichage du détail de tous les critères</label>
+					<input type="checkbox" pressed="false" disabled  class="fr-toggle__input" id="allTests"  name="allTests" data-filter="all">
+					<label class="fr-toggle__label" for="allTests">Afficher les tests</label>
 				</div>
-		</div-->
+		</div>
+
 
 		<div id="criteria-container">
 			{% set curThemeNum = 0 %}
@@ -149,3 +150,5 @@
 			</ul>
 		</div>
 	{% endblock %}
+
+
