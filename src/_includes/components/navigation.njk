@@ -15,26 +15,9 @@
                 {% endfor %}
                 </ul>
             </div>
-            {% elif entry.key ==  "ressources" %}
-            <button  {% if eleventyNavigation.parent == "ressources" or eleventyNavigation.key ==  "ressources"  %} aria-current="true" {% endif %}class="fr-nav__btn" aria-expanded="false" aria-controls="menu-ressources">{{ entry.title }} </button>
-            <div class="fr-collapse fr-menu" id="menu-ressources">
-                <ul class="fr-menu__list">
-                {% for g in collections.ressources %}
-                 <li><a class="fr-nav__link" href="/ressources/{{  g.slug }}/" target="_self">{{  g.ressource.data.title }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-            {% elif entry.key ==  "obligations" %}
-            <button {% if eleventyNavigation.parent == "obligations"  or eleventyNavigation.key ==  "obligations" %} aria-current="true" {% endif %} class="fr-nav__btn" aria-expanded="false" aria-controls="menu-obligations">{{ entry.title }} </button>
-            <div class="fr-collapse fr-menu" id="menu-obligations">
-                <ul class="fr-menu__list">
-                {% for g in collections.obligations %}
-                 <li><a class="fr-nav__link" href="/obligations/{{  g.slug }}/" target="_self">{{  g.obligation.data.title }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-            {% else %}
-                <a class="fr-nav__link" href="{{ entry.url | url }}" {% if entry.url == page.url %}aria-current="page"{% endif %}>{{ entry.title }}</a>
+
+
+
             {% endif %}
             </li>
             {%- endfor %}
