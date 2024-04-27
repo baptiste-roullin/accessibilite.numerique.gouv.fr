@@ -1,7 +1,5 @@
 import fastdom from "fastdom"
 
-
-
 export function allCriterionAndTests() {
 
 	const toggleAttribute = (el) => (el === "true" || "" ? "false" : "true")
