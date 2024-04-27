@@ -68,12 +68,12 @@ module.exports = function (eleventyConfig) {
 		// 	...dsfrOptions,
 		// 	...noModuleOptions,
 		// 	entryPoints: ["src/js/dsfr.*.js"],
-		// 	outfile: "public/js/dsfr.nomodule.min.js",
+		// 	outfile: "dist/js/dsfr.nomodule.min.js",
 		// });
 
 		// const dsfrPromiseModule = esbuild.build({
 		// 	...mainOptions,
-		// 	outfile: "public/js/main.module.js",
+		// 	outfile: "dist/js/main.module.js",
 		// });
 
 		// return mainPromiseNoModule
@@ -83,6 +83,8 @@ module.exports = function (eleventyConfig) {
 
 		return mainPromiseNoModule.then(mainPromiseModule)
 	})
+
+
 	eleventyConfig.addWatchTarget("./src/js/")
 
 	eleventyConfig.addPlugin(pluginTOC, {
@@ -93,7 +95,7 @@ module.exports = function (eleventyConfig) {
 	})
 	eleventyConfig.addPlugin(styles, {
 		inputDirectory: "src/scss",
-		publicDirectory: "css",
+		distDirectory: "css",
 		purgeCSSOptions: "off",
 		cssnanoOptions: "off",
 	})

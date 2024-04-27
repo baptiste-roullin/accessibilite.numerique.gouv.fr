@@ -4,23 +4,11 @@
     <div class="fr-header__menu-links"></div>
     <nav class="fr-nav" id="header-navigation" role="navigation" aria-label="Menu principal">
         <ul class="fr-nav__list">
-            {%- for entry in collections.all | eleventyNavigation %}
-            <li class="fr-nav__item {% if entry.url == page.url %} fr-nav__item--active{% endif %}">
-            {% if entry.key ==  "methode" %}
-            <button  {% if eleventyNavigation.parent == "methode"  or eleventyNavigation.key ==  "methode" %} aria-current="true" {% endif %}class="fr-nav__btn" aria-expanded="false" aria-controls="menu-methode">{{ entry.title }} </button>
-            <div class="fr-collapse fr-menu" id="menu-methode">
-                <ul class="fr-menu__list">
-                {% for g in collections.methodeTechnique %}
-                 <li><a class="fr-nav__link" href="/methode/{{  g.slug }}/" target="_self">{{  g.methode.data.title }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-
-
-
-            {% endif %}
-            </li>
-            {%- endfor %}
+            {% for entry in collections.all | eleventyNavigation %}
+				<li class="fr-nav__item " data-fr-js-navigation-item="true">
+                <a class="fr-nav__link" href="{{ entry.url | url }}" {% if entry.url == page.url %}aria-current="page"{% endif %}>{{ entry.title }}</a>
+				</li>
+			{% endfor %}
         </ul>
     </nav>
 </div>
