@@ -3,9 +3,8 @@ title: Environnement de test
 layout: layouts/base.njk
 description: Les différents environnements de tests desktop ou mobile
 eleventyNavigation:
-  title: Méthode technique
-  parent: methode
-  order: 4
+  title: Environnements
+  order: 3
 ---
 
 Quelques critères RGAA, notamment ceux de la thématique JavaScript, incluent des tests de restitution à effectuer sur des technologies d’assistance associées à des navigateurs et des systèmes d’exploitation.
@@ -76,9 +75,9 @@ Pour qu’un dispositif HTML / WAI-ARIA ou son alternative soit considéré comm
 
 ## Environnement de test Terminal mobile
 
-Les systèmes d’exploitation retenus sont Android et iOS et les navigateurs Chrome et Safari. Il appartient à l’auditeur de définir, en concertation avec les responsables du site audité, les versions de système d’exploitation et de navigateur en adéquation avec le contexte d’usage du site et l’environnement de test utilisé lors du développement du site. 
+Les systèmes d’exploitation retenus sont Android et iOS et les navigateurs Chrome et Safari. Il appartient à l’auditeur de définir, en concertation avec les responsables du site audité, les versions de système d’exploitation et de navigateur en adéquation avec le contexte d’usage du site et l’environnement de test utilisé lors du développement du site.
 
-Les versions des technologies d’assistance à utiliser seront soit la dernière disponible en langue française sur le système d’exploitation retenu, soit la version précédente. 
+Les versions des technologies d’assistance à utiliser seront soit la dernière disponible en langue française sur le système d’exploitation retenu, soit la version précédente.
 
 Pour tester un site web sur un terminal mobile, l’environnement de test devra comporter une des deux combinaisons complémentaires suivantes :
 
