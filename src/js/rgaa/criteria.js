@@ -1,61 +1,46 @@
 import fastdom from "fastdom"
 
-export function allCriterionAndTests() {
+export function showAllCriterionAndTests() {
 
-	const toggleAttribute = (el) => (el === "true" || "" ? "false" : "true")
+
+	function enableAllTestsSwitch() {
+		if (document.querySelector("#allTests")?.hasAttribute("disabled"))
+			allTests?.removeAttribute("disabled")
+		else {
+			allTests?.setAttribute("disabled", "true")
+		}
+	}
+
+	const expandAll = (target, containers) => {
+		console.log(target.checked)
+		containers.forEach(container => {
+			const button = container.children[0]
+			fastdom.mutate(() => {
+				button.setAttribute("aria-expanded", target.checked)
+			})
+		})
+	}
 
 	const allCriterion = document.querySelector("#allCriterion")
-	const allTests = document.querySelector("#allTests")
-
-
-	const displayAllCriterion = (event) => {
-		const containers = document.querySelectorAll(".criteres > div > section ")
-
-		containers.forEach(container => {
-			const button = container.children[0]
-			const disabled = allTests?.getAttribute("disabled")
-			if (disabled)
-				allTests?.removeAttribute("disabled")
-			else {
-				allTests?.setAttribute("disabled", "true")
-			}
-
-			fastdom.mutate(() => {
-				button.setAttribute("aria-expanded", event.target.checked)
-			})
-
-		})
-	}
-
-	function displayAllTests(event) {
-		const containers = document.querySelectorAll(" .tests .methodologie")
-
-		containers.forEach(container => {
-			const button = container.children[0]
-			fastdom.mutate(() => {
-				button.setAttribute("aria-expanded", event.target.checked)
-			})
-
-		})
-
-	}
-
-
 	if (allCriterion) {
-		allCriterion?.addEventListener("change", displayAllCriterion)
+		const containers = document.querySelectorAll(".criteres > div > section ")
+		allCriterion?.addEventListener("change", (event) => {
+			expandAll(event.target, containers)
+			enableAllTestsSwitch()
+		})
+		window.addEventListener("DOMContentLoaded", () => { expandAll(allCriterion, containers) })
+
 	}
 
-	if (allTests && !allTests.getAttribute("disabled")) {
-		allTests.addEventListener("change", displayAllTests)
+	const allTests = document.querySelector("#allTests")
+	if (allTests) {
+		const containers = document.querySelectorAll(" .tests .methodologie")
+		allTests.addEventListener("change", (event) => { expandAll(event.target, containers) })
+		window.addEventListener("DOMContentLoaded", () => { expandAll(allTests, containers) })
 	}
-	/*
-		document.addEventListener('DOMContentLoaded', function () {
-			displayAllCriterion()
-			displayAllTests()
-		})*/
 }
 
-allCriterionAndTests()
+showAllCriterionAndTests()
 
 export function init() {
 	// Handle the 3 filters in criteria page
