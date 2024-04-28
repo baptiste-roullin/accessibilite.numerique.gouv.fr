@@ -36,17 +36,7 @@ module.exports = function (eleventyConfig) {
 			entryPoints: ["src/js/main.js"],
 		}
 
-		// Options for the "nomodule version" of main.js
-		const noModuleOptions = {
-			plugins: [babel()],
-			target: ["es5"],
-		}
 
-		const mainPromiseNoModule = esbuild.build({
-			...mainOptions,
-			...noModuleOptions,
-			outfile: "dist/js/main.nomodule.js",
-		})
 
 		const mainPromiseModule = esbuild.build({
 			...mainOptions,
@@ -81,7 +71,7 @@ module.exports = function (eleventyConfig) {
 		// 	.then(dsfrPromiseNoModule)
 		// 	.then(dsfrPromiseModule);
 
-		return mainPromiseNoModule.then(mainPromiseModule)
+		return mainPromiseModule
 	})
 
 
