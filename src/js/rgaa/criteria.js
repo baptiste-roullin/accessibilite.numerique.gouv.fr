@@ -12,13 +12,21 @@ export function showAllCriterionAndTests() {
 	}
 
 	const expandAll = (target, containers) => {
-		console.log(target.checked)
-		containers.forEach(container => {
-			const button = container.children[0]
-			fastdom.mutate(() => {
-				button.setAttribute("aria-expanded", target.checked)
-			})
-		})
+
+		const button = containers[0].children[0]
+
+		button.setAttribute("aria-expanded", target.checked)
+		if (target.checked === false) {
+			target.focus()
+		}
+		/*	containers.forEach(container => {
+				const button = container.children[0]
+	//			button.preventDefault()
+				fastdom.mutate(() => {
+					button.setAttribute("aria-expanded", target.checked)
+				})
+			})*/
+
 	}
 
 	const allCriterion = document.querySelector("#allCriterion")
@@ -35,7 +43,9 @@ export function showAllCriterionAndTests() {
 	const allTests = document.querySelector("#allTests")
 	if (allTests) {
 		const containers = document.querySelectorAll(" .tests .methodologie")
-		allTests.addEventListener("change", (event) => { expandAll(event.target, containers) })
+		allTests.addEventListener("change", (event) => {
+			expandAll(event.target, containers)
+		})
 		window.addEventListener("DOMContentLoaded", () => { expandAll(allTests, containers) })
 	}
 }
