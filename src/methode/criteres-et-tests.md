@@ -2,7 +2,7 @@
 title: Critères et tests
 layout: layouts/rgaa.njk
 permalink: index.html
-description: Les 13 thématiques, les 106 critères, les tests et leur méthodologie du référentiel technique d’accessibilité numérique
+description: Les 13 thématiques, les 106 critères, les trouzemille tests, le tout ctrlhèfe-friendly.
 eleventyNavigation:
   title: Critère et tests
   order: 1
